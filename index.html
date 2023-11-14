@@ -15,7 +15,7 @@
     <link rel="stylesheet" href="css/layout.css" />
     <link rel="stylesheet" href="css/styles.css" />
   </head>
-  <body>
+  <body class="gray-background">
     <header class="purple-bg-white-text">
       <div class="container">
         <div class="row">
@@ -32,39 +32,45 @@
             </div>
           </div>
           <div class="row">
-            <div class="column-half">
+            <div class="column-half bottom-margin">
               <img
-                class=""
+                class="rounded-border"
                 src="images/placeholder-image-square.jpg"
                 alt="Your link isn't working, fix it!" />
             </div>
             <div class="column-half">
-              <div>
+              <div class="bottom-margin-more">
                 <label for="title" class="column-half">Title</label>
               </div>
               <div>
                 <input
-                  class="column-half"
+                  class="column-half full-width rounded-border border input-height"
                   type="text"
                   id="title"
                   name="title" />
               </div>
-              <div>
+              <div class="bottom-margin-more top-margin">
                 <label for="url" class="column-half">Photo URL</label>
               </div>
               <div>
-                <input class="column-half" type="url" id="url" name="url" />
+                <input
+                  class="column-half full-width rounded-border border input-height"
+                  type="url"
+                  id="url"
+                  name="url" />
               </div>
             </div>
           </div>
           <div class="row">
             <div class="column-full">
-              <div>
-                <label for="notes" class="column-full">Notes</label>
+              <div class="bottom-margin">
+                <label for="notes" class="column-full display-block"
+                  >Notes</label
+                >
               </div>
               <div>
                 <input
-                  class="column-full"
+                  class="column-full box-height rounded-border border bottom-margin"
                   type="text"
                   id="notes"
                   name="notes" />
@@ -72,7 +78,7 @@
             </div>
           </div>
           <div class="row">
-            <div class="column-full align-left">
+            <div class="column-full align-end bottom-margin">
               <button type="button" class="purple-bg-white-text save-button">
                 SAVE
               </button>

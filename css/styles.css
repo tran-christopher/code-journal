@@ -3,14 +3,60 @@
   color: white;
 }
 
-.align-left {
+.align-end {
   text-align: end;
 }
 
 .save-button {
-  border-radius: 15%;
+  border-radius: 10%;
+  height: 30px;
 }
 
 img {
   width: 100%;
+}
+
+.full-width {
+  width: 100%;
+}
+
+.input-height {
+  height: 30px;
+}
+
+.box-height {
+  height: 130px;
+}
+
+.rounded-border {
+  border-radius: 2%;
+}
+
+.border {
+  border-color: #d1d1d1;
+  border-width: thin;
+}
+
+.more-rounded {
+  border-radius: 2%;
+}
+
+.gray-background {
+  background-color: #f5f4f4;
+}
+
+.bottom-margin {
+  margin-bottom: 2%;
+}
+
+.bottom-margin-more {
+  margin-bottom: 2.5%;
+}
+
+.top-margin {
+  margin-top: 6%;
+}
+
+.display-block {
+  display: block;
 }
