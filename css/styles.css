@@ -2,3 +2,15 @@
   background-color: #4c2474;
   color: white;
 }
+
+.align-left {
+  text-align: end;
+}
+
+.save-button {
+  border-radius: 15%;
+}
+
+img {
+  width: 100%;
+}
