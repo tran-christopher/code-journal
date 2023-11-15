@@ -15,12 +15,79 @@
     <link rel="stylesheet" href="css/layout.css" />
     <link rel="stylesheet" href="css/styles.css" />
   </head>
-  <body>
-    <header>
-      <div class="container"></div>
+  <body class="gray-background">
+    <header class="purple-bg-white-text">
+      <div class="container">
+        <div class="row">
+          <h1 class="column-full">Code Journal</h1>
+        </div>
+      </div>
     </header>
     <main class="container">
-      <div data-view="entry-form"></div>
+      <div data-view="entry-form">
+        <form class="form">
+          <div class="row">
+            <div class="column-half">
+              <h2 class="">New Entry</h2>
+            </div>
+          </div>
+          <div class="row">
+            <div class="column-half bottom-margin">
+              <img
+                class="rounded-border image"
+                src="images/placeholder-image-square.jpg"
+                alt="Your link isn't working, fix it!" />
+            </div>
+            <div class="column-half">
+              <div class="bottom-margin-more">
+                <label for="title" class="padding-zero">Title</label>
+              </div>
+              <div>
+                <input
+                  class="full-width rounded-border border input-height title bottom-margin-more"
+                  type="text"
+                  id="title"
+                  name="title"
+                  required />
+              </div>
+              <div class="bottom-margin-more">
+                <label for="url" class="column-half padding-zero"
+                  >Photo URL</label
+                >
+              </div>
+              <div>
+                <input
+                  class="full-width rounded-border border input-height photo bottom-margin-more"
+                  type="url"
+                  id="url"
+                  name="url"
+                  required />
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="column-full">
+              <div class="bottom-margin">
+                <label for="notes" class="padding-zero">Notes</label>
+              </div>
+              <div>
+                <textarea
+                  class="full-width box-height rounded-border border bottom-margin notes"
+                  id="notes"
+                  name="notes"
+                  required></textarea>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="column-full align-end bottom-margin">
+              <button type="submit" class="purple-bg-white-text save-button">
+                SAVE
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
       <div data-view="entries" class="hidden"></div>
     </main>
     <script src="js/data.js"></script>
