@@ -7,7 +7,14 @@ const data = {
   nextEntryId: 1,
 };
 
+let dataJSON = JSON.stringify(data);
+
 window.addEventListener('beforeunload', function (event) {
-  const dataJSON = JSON.stringify(data);
   this.localStorage.setItem('data-model', dataJSON);
 });
+
+const getJSON = localStorage.getItem('data-model');
+
+if (getJSON === dataJSON) {
+  dataJSON = JSON.parse(getJSON);
+}
