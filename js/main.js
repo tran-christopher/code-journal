@@ -7,7 +7,6 @@ const $handlePhoto = document.querySelector('.image');
 
 $photoInput.addEventListener('input', function (event) {
   $handlePhoto.src = event.target.value;
-  console.log('event.target:', event.target);
 });
 
 const $handleForm = document.querySelector('.form');
@@ -23,6 +22,4 @@ $handleForm.addEventListener('submit', function (event) {
   data.nextEntryId = data.nextEntryId + 1;
   $handlePhoto.src = 'images/placeholder-image-square.jpg';
   $handleForm.reset();
-  console.log(data.entries);
-  console.log(data.nextEntryId);
 });
