@@ -13,7 +13,7 @@ const $handleForm = document.querySelector('.form');
 
 $handleForm.addEventListener('submit', function (event) {
   event.preventDefault();
-  data.entries.push({
+  data.entries.unshift({
     title: $titleInput.value,
     url: $photoInput.value,
     notes: $notesInput.value,

@@ -13,6 +13,6 @@ window.addEventListener('beforeunload', function (event) {
 });
 
 const getJSON = localStorage.getItem('data-model');
-if (getJSON) {
+if (getJSON !== null) {
   data = JSON.parse(getJSON);
 }
