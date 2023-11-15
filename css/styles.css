@@ -56,3 +56,11 @@ img {
 .padding-zero {
   padding: 0;
 }
+
+.medium-font {
+  font-size: medium;
+}
+
+.no-bullets {
+  list-style-type: none;
+}

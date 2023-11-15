@@ -19,13 +19,15 @@
     <header class="purple-bg-white-text">
       <div class="container">
         <div class="row">
-          <h1 class="column-full">Code Journal</h1>
+          <h1 class="column-full">
+            Code Journal<span class="medium-font">&emsp;Entries</span>
+          </h1>
         </div>
       </div>
     </header>
     <main class="container">
       <div data-view="entry-form">
-        <form class="form">
+        <form class="form hidden">
           <div class="row">
             <div class="column-half">
               <h2 class="">New Entry</h2>
@@ -88,8 +90,47 @@
           </div>
         </form>
       </div>
-      <div data-view="entries" class="hidden">
-        <ul></ul>
+      <div data-view="entries" class="">
+        <div class="row">
+          <div class="column-half">
+            <h2 class="">Entries</h2>
+          </div>
+        </div>
+        <ul class="no-bullets padding-zero">
+          <li class="row">
+            <div class="column-half">
+              <img
+                src="images/placeholder-image-square.jpg"
+                alt="placeholder" />
+            </div>
+            <div class="column-half">
+              <h3>test</h3>
+              <p>testing</p>
+            </div>
+          </li>
+          <li class="row">
+            <div class="column-half">
+              <img
+                src="images/placeholder-image-square.jpg"
+                alt="placeholder" />
+            </div>
+            <div class="column-half">
+              <h3>kebab</h3>
+              <p>kebubub</p>
+            </div>
+          </li>
+          <li class="row">
+            <div class="column-half">
+              <img
+                src="images/placeholder-image-square.jpg"
+                alt="placeholder" />
+            </div>
+            <div class="column-half">
+              <h3>jackie chan</h3>
+              <p>karate chop</p>
+            </div>
+          </li>
+        </ul>
       </div>
     </main>
     <script src="js/data.js"></script>
