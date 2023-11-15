@@ -40,22 +40,26 @@
             </div>
             <div class="column-half">
               <div class="bottom-margin-more">
-                <label for="title" class="column-half">Title</label>
+                <label for="title" class="column-half padding-zero"
+                  >Title</label
+                >
               </div>
-              <div>
+              <div class="">
                 <input
-                  class="column-half full-width rounded-border border input-height title"
+                  class="column-half full-width rounded-border border input-height title bottom-margin-more"
                   type="text"
                   id="title"
                   name="title"
                   required />
               </div>
-              <div class="bottom-margin-more top-margin">
-                <label for="url" class="column-half">Photo URL</label>
+              <div class="bottom-margin-more">
+                <label for="url" class="column-half padding-zero"
+                  >Photo URL</label
+                >
               </div>
               <div>
                 <input
-                  class="column-half full-width rounded-border border input-height photo"
+                  class="column-half full-width rounded-border border input-height photo bottom-margin-more"
                   type="url"
                   id="url"
                   name="url"
@@ -66,17 +70,16 @@
           <div class="row">
             <div class="column-full">
               <div class="bottom-margin">
-                <label for="notes" class="column-full display-block"
+                <label for="notes" class="column-full padding-zero"
                   >Notes</label
                 >
               </div>
               <div>
-                <input
+                <textarea
                   class="column-full box-height rounded-border border bottom-margin notes"
-                  type="text"
                   id="notes"
                   name="notes"
-                  required />
+                  required></textarea>
               </div>
             </div>
           </div>
