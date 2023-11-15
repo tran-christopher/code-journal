@@ -8,5 +8,6 @@ const data = {
 };
 
 window.addEventListener('beforeunload', function (event) {
-  JSON.stringify(data);
+  const dataJSON = JSON.stringify(data);
+  this.localStorage.setItem('data-model', dataJSON);
 });

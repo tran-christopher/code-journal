@@ -20,7 +20,9 @@ $handleForm.addEventListener('submit', function (event) {
     notes: $notesInput.value,
     entryId: data.nextEntryId,
   });
-  data.nextEntryId++;
+  data.nextEntryId = data.nextEntryId + 1;
   $handlePhoto.src = 'images/placeholder-image-square.jpg';
   $handleForm.reset();
+  console.log(data.entries);
+  console.log(data.nextEntryId);
 });
