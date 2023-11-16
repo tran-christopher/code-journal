@@ -63,3 +63,28 @@ document.addEventListener('DOMContentLoaded', function (event) {
     $list.appendChild($newEntry);
   }
 });
+
+// function toggleNoEntries () {
+const $noEntries = document.querySelector('.noEntries');
+if ($noEntries.className === 'hidden') {
+  $noEntries.className.remove('hidden');
+} else {
+  $noEntries.className = 'hidden';
+}
+// };
+
+// const $entryForm = document.querySelector('class', '.entry-form');
+// const $entries = document.querySelector('class', '.entries')
+
+// function viewSwap (view) {
+//   if (view === 'entries') {
+//     $entries.setAttribute('class', 'not-hidden')
+//     $entryForm.setAttribute('class', 'hidden')
+//     data.view = view
+//   }
+//   else if (view === 'entry-form') {
+//     $entries.setAttribute('class', 'hidden')
+//     $entryForm.setAttribute('class', 'not-hidden')
+//     data.view = view
+//   }
+// }
