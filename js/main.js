@@ -26,7 +26,10 @@ $handleForm.addEventListener('submit', function (event) {
 });
 
 // Issue #2
+const test = data.entries;
+
 function renderEntry(entry) {
+  console.log(entry);
   const $li = document.createElement('li');
   const $imageDiv = document.createElement('div');
   const $image = document.createElement('img');
@@ -36,12 +39,12 @@ function renderEntry(entry) {
 
   $li.setAttribute('class', 'row');
   $imageDiv.setAttribute('class', 'column-half');
-  $image.setAttribute('src', $photoInput.value);
+  $image.setAttribute('src', entry.url);
   $image.setAttribute('alt', 'Fix your link!');
   $textDiv.setAttribute('class', 'column-half');
 
-  $h3.textContent = $titleInput.value;
-  $p.textContent = $notesInput.value;
+  $h3.textContent = entry.title;
+  $p.textContent = entry.notes;
 
   $li.appendChild($imageDiv);
   $li.appendChild($textDiv);
@@ -56,7 +59,7 @@ const $list = document.querySelector('.no-bullets');
 
 document.addEventListener('DOMContentLoaded', function (event) {
   for (let i = 0; i < data.entries.length; i++) {
-    const $newEntry = renderEntry(data.entries[i]);
+    const $newEntry = renderEntry(test[i]);
     $list.appendChild($newEntry);
   }
 });
