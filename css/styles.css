@@ -7,6 +7,10 @@
   text-align: end;
 }
 
+.align-right {
+  text-align: right;
+}
+
 .save-button {
   border-radius: 10%;
   height: 30px;
