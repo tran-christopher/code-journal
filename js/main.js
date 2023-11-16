@@ -73,18 +73,28 @@ if ($noEntries.className === 'hidden') {
 }
 // };
 
-// const $entryForm = document.querySelector('class', '.entry-form');
-// const $entries = document.querySelector('class', '.entries')
+const $entryForm = document.querySelector('.entry-form');
+const $entries = document.querySelector('.entries');
 
-// function viewSwap (view) {
-//   if (view === 'entries') {
-//     $entries.setAttribute('class', 'not-hidden')
-//     $entryForm.setAttribute('class', 'hidden')
-//     data.view = view
-//   }
-//   else if (view === 'entry-form') {
-//     $entries.setAttribute('class', 'hidden')
-//     $entryForm.setAttribute('class', 'not-hidden')
-//     data.view = view
-//   }
-// }
+function viewSwap(view) {
+  if (view === 'entries') {
+    $entries.classList.remove('hidden');
+    $entryForm.classList.add('hidden');
+    data.view = view;
+  } else if (view === 'entry-form') {
+    $entries.classList.add('hidden');
+    $entryForm.classList.remove('hidden');
+    data.view = view;
+  }
+}
+
+const $entriesAnchor = document.querySelector('.entries-anchor');
+$entriesAnchor.addEventListener('click', function (event) {
+  const string = 'entries';
+  viewSwap(string);
+});
+const $entryFormAnchor = document.querySelector('.entry-form-anchor');
+$entryFormAnchor.addEventListener('click', function (event) {
+  const string = 'entry-form';
+  viewSwap(string);
+});
