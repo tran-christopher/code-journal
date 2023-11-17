@@ -11,6 +11,9 @@ $photoInput.addEventListener('input', function (event) {
 });
 
 const $handleForm = document.querySelector('.form');
+const $list = document.querySelector('.no-bullets');
+const $entryForm = document.querySelector('.entry-form');
+const $entries = document.querySelector('.entries');
 
 $handleForm.addEventListener('submit', function (event) {
   event.preventDefault();
@@ -20,16 +23,21 @@ $handleForm.addEventListener('submit', function (event) {
     notes: $notesInput.value,
     entryId: data.nextEntryId,
   });
-  data.nextEntryId = data.nextEntryId + 1;
-  $handlePhoto.src = 'images/placeholder-image-square.jpg';
-  $handleForm.reset();
+  for (let i = 0; i < data.entries.length; i++) {
+    const $newEntry = renderEntry(data.entries[i]);
+    $list.prepend($newEntry);
+    viewSwap('entries');
+    // if ($list.children.length > 1) {
+    //   toggleNoEntries()
+    // };
+    data.nextEntryId = data.nextEntryId + 1;
+    $handlePhoto.src = 'images/placeholder-image-square.jpg';
+    $handleForm.reset();
+  }
 });
 
 // Issue #2
-const test = data.entries;
-
 function renderEntry(entry) {
-  console.log(entry);
   const $li = document.createElement('li');
   const $imageDiv = document.createElement('div');
   const $image = document.createElement('img');
@@ -55,26 +63,16 @@ function renderEntry(entry) {
   return $li;
 }
 
-const $list = document.querySelector('.no-bullets');
-
-document.addEventListener('DOMContentLoaded', function (event) {
-  for (let i = 0; i < data.entries.length; i++) {
-    const $newEntry = renderEntry(test[i]);
-    $list.appendChild($newEntry);
-  }
-});
+document.addEventListener('DOMContentLoaded', function (event) {});
 
 // function toggleNoEntries () {
 const $noEntries = document.querySelector('.noEntries');
-if ($noEntries.className === 'hidden') {
+if ($noEntries.classList.contains('hidden')) {
   $noEntries.className.remove('hidden');
 } else {
-  $noEntries.className = 'hidden';
+  $noEntries.className.add('hidden');
 }
-// };
-
-const $entryForm = document.querySelector('.entry-form');
-const $entries = document.querySelector('.entries');
+// }
 
 function viewSwap(view) {
   if (view === 'entries') {
