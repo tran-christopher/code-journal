@@ -63,15 +63,17 @@ function renderEntry(entry) {
   return $li;
 }
 
-document.addEventListener('DOMContentLoaded', function (event) {});
+document.addEventListener('DOMContentLoaded', function (event) {
+  viewSwap(data.view);
+});
 
 // function toggleNoEntries () {
-const $noEntries = document.querySelector('.noEntries');
-if ($noEntries.classList.contains('hidden')) {
-  $noEntries.className.remove('hidden');
-} else {
-  $noEntries.className.add('hidden');
-}
+// const $noEntries = document.querySelector('.noEntries');
+// if ($noEntries.classList.contains('hidden')) {
+//   $noEntries.className.remove('hidden');
+// } else {
+//   $noEntries.className.add('hidden');
+// }
 // }
 
 function viewSwap(view) {
