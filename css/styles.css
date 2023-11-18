@@ -7,9 +7,17 @@
   text-align: end;
 }
 
+.align-right {
+  text-align: right;
+}
+
 .save-button {
   border-radius: 10%;
   height: 30px;
+}
+
+.save-button:hover {
+  cursor: pointer;
 }
 
 img {
@@ -55,4 +63,30 @@ img {
 
 .padding-zero {
   padding: 0;
+}
+
+.medium-font {
+  font-size: medium;
+}
+
+.no-bullets {
+  list-style-type: none;
+}
+
+.no-decor {
+  text-decoration: none;
+  color: inherit;
+}
+
+.no-decor:hover {
+  cursor: pointer;
+}
+
+.new {
+  color: white;
+  text-decoration: none;
+  background-color: #4c2474;
+  padding: 2%;
+  border-radius: 10%;
+  font-size: medium;
 }
