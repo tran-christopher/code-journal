@@ -28,7 +28,7 @@ $handleForm.addEventListener('submit', function (event) {
   $list.prepend($newObject);
   viewSwap('entries');
   toggleNoEntries();
-  data.nextEntryId = data.nextEntryId++;
+  data.nextEntryId++;
   $handlePhoto.src = 'images/placeholder-image-square.jpg';
   $handleForm.reset();
 });
@@ -66,9 +66,7 @@ document.addEventListener('DOMContentLoaded', function (event) {
     $list.prepend($newEntry);
   }
   viewSwap(data.view);
-  if ($list.children.length > 1) {
-    toggleNoEntries();
-  }
+  toggleNoEntries();
 });
 
 const $noEntries = document.querySelector('.noEntries');
