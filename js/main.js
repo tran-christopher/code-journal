@@ -27,13 +27,13 @@ $handleForm.addEventListener('submit', function (event) {
     const $newEntry = renderEntry(data.entries[i]);
     $list.prepend($newEntry);
     viewSwap('entries');
-    // if ($list.children.length > 1) {
-    //   toggleNoEntries()
-    // };
-    data.nextEntryId = data.nextEntryId + 1;
-    $handlePhoto.src = 'images/placeholder-image-square.jpg';
-    $handleForm.reset();
   }
+  if ($list.children.length > 1) {
+    toggleNoEntries();
+  }
+  data.nextEntryId = data.nextEntryId + 1;
+  $handlePhoto.src = 'images/placeholder-image-square.jpg';
+  $handleForm.reset();
 });
 
 // Issue #2
@@ -67,14 +67,16 @@ document.addEventListener('DOMContentLoaded', function (event) {
   viewSwap(data.view);
 });
 
-// function toggleNoEntries () {
-// const $noEntries = document.querySelector('.noEntries');
-// if ($noEntries.classList.contains('hidden')) {
-//   $noEntries.className.remove('hidden');
-// } else {
-//   $noEntries.className.add('hidden');
-// }
-// }
+function toggleNoEntries() {
+  const $noEntries = document.querySelector('.noEntries');
+  if ($noEntries.classList.contains('hidden')) {
+    console.log('the first if condition');
+    $noEntries.classList.remove('hidden');
+  } else {
+    console.log('the second if condition');
+    $noEntries.classList.add('hidden');
+  }
+}
 
 function viewSwap(view) {
   if (view === 'entries') {
