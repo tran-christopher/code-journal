@@ -17,21 +17,18 @@ const $entries = document.querySelector('.entries');
 
 $handleForm.addEventListener('submit', function (event) {
   event.preventDefault();
-  data.entries.unshift({
+  const newObject = {
     title: $titleInput.value,
     url: $photoInput.value,
     notes: $notesInput.value,
     entryId: data.nextEntryId,
-  });
-  for (let i = 0; i < data.entries.length; i++) {
-    const $newEntry = renderEntry(data.entries[i]);
-    $list.prepend($newEntry);
-    viewSwap('entries');
-  }
-  if ($list.children.length > 1) {
-    toggleNoEntries();
-  }
-  data.nextEntryId = data.nextEntryId + 1;
+  };
+  data.entries.unshift(newObject);
+  const $newObject = renderEntry(newObject);
+  $list.prepend($newObject);
+  viewSwap('entries');
+  toggleNoEntries();
+  data.nextEntryId = data.nextEntryId++;
   $handlePhoto.src = 'images/placeholder-image-square.jpg';
   $handleForm.reset();
 });
@@ -64,17 +61,23 @@ function renderEntry(entry) {
 }
 
 document.addEventListener('DOMContentLoaded', function (event) {
+  for (let i = 0; i < data.entries.length; i++) {
+    const $newEntry = renderEntry(data.entries[i]);
+    $list.prepend($newEntry);
+  }
   viewSwap(data.view);
+  if ($list.children.length > 1) {
+    toggleNoEntries();
+  }
 });
 
+const $noEntries = document.querySelector('.noEntries');
+
 function toggleNoEntries() {
-  const $noEntries = document.querySelector('.noEntries');
-  if ($noEntries.classList.contains('hidden')) {
-    console.log('the first if condition');
-    $noEntries.classList.remove('hidden');
-  } else {
-    console.log('the second if condition');
+  if (data.entries.length !== 0) {
     $noEntries.classList.add('hidden');
+  } else {
+    $noEntries.classList.remove('hidden');
   }
 }
 
