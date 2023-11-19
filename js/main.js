@@ -40,6 +40,7 @@ function renderEntry(entry) {
   const $image = document.createElement('img');
   const $textDiv = document.createElement('div');
   const $h3 = document.createElement('h3');
+  const $icon = document.createElement('i');
   const $p = document.createElement('p');
 
   $li.setAttribute('class', 'row');
@@ -55,6 +56,7 @@ function renderEntry(entry) {
   $li.appendChild($textDiv);
   $imageDiv.appendChild($image);
   $textDiv.appendChild($h3);
+  $textDiv.appendChild($icon);
   $textDiv.appendChild($p);
 
   return $li;
