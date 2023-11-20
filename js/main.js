@@ -39,6 +39,7 @@ function renderEntry(entry) {
   const $imageDiv = document.createElement('div');
   const $image = document.createElement('img');
   const $textDiv = document.createElement('div');
+  // const $titleDiv = document.createElement('div');
   const $h3 = document.createElement('h3');
   const $icon = document.createElement('i');
   const $p = document.createElement('p');
