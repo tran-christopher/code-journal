@@ -39,7 +39,7 @@ function renderEntry(entry) {
   const $imageDiv = document.createElement('div');
   const $image = document.createElement('img');
   const $textDiv = document.createElement('div');
-  // const $titleDiv = document.createElement('div');
+  const $titleDiv = document.createElement('div');
   const $h3 = document.createElement('h3');
   const $icon = document.createElement('i');
   const $p = document.createElement('p');
@@ -49,6 +49,8 @@ function renderEntry(entry) {
   $image.setAttribute('src', entry.url);
   $image.setAttribute('alt', 'Fix your link!');
   $textDiv.setAttribute('class', 'column-half');
+  $titleDiv.setAttribute('class', 'row-no-wrap');
+  $icon.setAttribute('class', 'align-self-center fa-solid fa-pencil');
 
   $h3.textContent = entry.title;
   $p.textContent = entry.notes;
@@ -56,8 +58,9 @@ function renderEntry(entry) {
   $li.appendChild($imageDiv);
   $li.appendChild($textDiv);
   $imageDiv.appendChild($image);
-  $textDiv.appendChild($h3);
-  $textDiv.appendChild($icon);
+  $textDiv.appendChild($titleDiv);
+  $titleDiv.appendChild($h3);
+  $titleDiv.appendChild($icon);
   $textDiv.appendChild($p);
 
   return $li;

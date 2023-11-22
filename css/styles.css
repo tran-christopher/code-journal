@@ -94,3 +94,12 @@ img {
   border-radius: 10%;
   font-size: medium;
 }
+
+.row-no-wrap {
+  display: flex;
+  justify-content: space-between;
+}
+
+.align-self-center {
+  align-self: center;
+}
