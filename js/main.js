@@ -23,14 +23,32 @@ $handleForm.addEventListener('submit', function (event) {
     notes: $notesInput.value,
     entryId: data.nextEntryId,
   };
-  data.entries.unshift(newObject);
-  const $newObject = renderEntry(newObject);
-  $list.prepend($newObject);
-  viewSwap('entries');
-  toggleNoEntries();
-  data.nextEntryId++;
-  $handlePhoto.src = 'images/placeholder-image-square.jpg';
-  $handleForm.reset();
+  if (data.editing === null) {
+    data.entries.unshift(newObject);
+    const $newObject = renderEntry(newObject);
+    $list.prepend($newObject);
+    data.nextEntryId++;
+    $handlePhoto.src = 'images/placeholder-image-square.jpg';
+    $handleForm.reset();
+    viewSwap('entries');
+    toggleNoEntries();
+  } else {
+    newObject.entryId = data.editing.entryId;
+    for (let i = 0; i < data.entries.length; i++) {
+      if (newObject.entryId === data.entries[i].entryId) {
+        data.entries[i] = newObject;
+      }
+    }
+    const $newObject = renderEntry(newObject);
+    const $originalLi = document.querySelector(
+      `[data-entry-id="${data.editing.entryId}"]`
+    );
+    $originalLi.replaceWith($newObject);
+    $entryTitle.textContent = 'New Entry';
+    data.editing = null;
+    viewSwap('entries');
+    toggleNoEntries();
+  }
 });
 
 // Issue #2
