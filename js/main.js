@@ -51,7 +51,7 @@ function renderEntry(entry) {
   $image.setAttribute('alt', 'Fix your link!');
   $textDiv.setAttribute('class', 'column-half');
   $titleDiv.setAttribute('class', 'row-no-wrap');
-  $icon.setAttribute('class', 'align-self-center fa-solid fa-pencil');
+  $icon.setAttribute('class', 'no-decor align-self-center fa-solid fa-pencil');
 
   $h3.textContent = entry.title;
   $p.textContent = entry.notes;
@@ -107,4 +107,16 @@ const $entryFormAnchor = document.querySelector('.entry-form-anchor');
 $entryFormAnchor.addEventListener('click', function (event) {
   const string = 'entry-form';
   viewSwap(string);
+});
+
+$list.addEventListener('click', function (event) {
+  const firstParent = event.target.parentElement.parentElement.parentElement;
+  for (let i = 0; i < data.entries.length; i++) {
+    // if (data.entries[i].entryId === firstParent.getAttribute('data-entry-id')) {
+    console.log(typeof data.entries[i].entryId.toString());
+    // }
+    // else
+    console.log(typeof firstParent.getAttribute('data-entry-id'));
+  }
+  viewSwap('entry-form');
 });
