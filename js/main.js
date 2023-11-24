@@ -45,6 +45,7 @@ function renderEntry(entry) {
   const $p = document.createElement('p');
 
   $li.setAttribute('class', 'row');
+  $li.setAttribute('data-entry-id', entry.entryId);
   $imageDiv.setAttribute('class', 'column-half');
   $image.setAttribute('src', entry.url);
   $image.setAttribute('alt', 'Fix your link!');
