@@ -112,11 +112,14 @@ $entryFormAnchor.addEventListener('click', function (event) {
 $list.addEventListener('click', function (event) {
   const firstParent = event.target.parentElement.parentElement.parentElement;
   for (let i = 0; i < data.entries.length; i++) {
-    // if (data.entries[i].entryId === firstParent.getAttribute('data-entry-id')) {
-    console.log(typeof data.entries[i].entryId.toString());
-    // }
-    // else
-    console.log(typeof firstParent.getAttribute('data-entry-id'));
+    if (
+      data.entries[i].entryId.toString() ===
+      firstParent.getAttribute('data-entry-id')
+    ) {
+      data.editing = data.entries[i];
+    } else {
+      firstParent.getAttribute('data-entry-id');
+    }
   }
   viewSwap('entry-form');
 });
