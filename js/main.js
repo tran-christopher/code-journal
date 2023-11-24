@@ -109,6 +109,8 @@ $entryFormAnchor.addEventListener('click', function (event) {
   viewSwap(string);
 });
 
+const $entryTitle = document.querySelector('.entry-title');
+
 $list.addEventListener('click', function (event) {
   const firstParent = event.target.parentElement.parentElement.parentElement;
   for (let i = 0; i < data.entries.length; i++) {
@@ -117,9 +119,12 @@ $list.addEventListener('click', function (event) {
       firstParent.getAttribute('data-entry-id')
     ) {
       data.editing = data.entries[i];
-    } else {
-      firstParent.getAttribute('data-entry-id');
     }
+    $titleInput.value = data.editing.title;
+    $photoInput.value = data.editing.url;
+    $notesInput.value = data.editing.notes;
+    $handlePhoto.src = data.editing.url;
+    $entryTitle.textContent = 'Edit Entry';
   }
   viewSwap('entry-form');
 });
