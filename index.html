@@ -28,6 +28,14 @@
       </div>
     </header>
     <main class="container">
+      <div class="modal-container">
+        <button class="purple-bg-white-text confirm" type="button">
+          Confirm
+        </button>
+        <button class="purple-bg-white-text cancel" type="button">
+          Cancel
+        </button>
+      </div>
       <div data-view="entry-form" class="entry-form hidden" id="entry-form">
         <form class="form">
           <div class="row">
@@ -85,7 +93,9 @@
           </div>
           <div class="row">
             <div class="column-full">
-              <button type="button" class="delete-button">Delete Entry</button>
+              <button type="button" class="delete-button hidden">
+                Delete Entry
+              </button>
             </div>
             <div class="column-full align-end bottom-margin">
               <button type="submit" class="purple-bg-white-text save-button">
