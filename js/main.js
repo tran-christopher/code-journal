@@ -6,14 +6,18 @@ const $notesInput = document.querySelector('.notes');
 const $photoInput = document.querySelector('.photo');
 const $handlePhoto = document.querySelector('.image');
 
-$photoInput.addEventListener('input', function (event) {
-  $handlePhoto.src = event.target.value;
-});
-
 const $handleForm = document.querySelector('.form');
 const $list = document.querySelector('.no-bullets');
 const $entryForm = document.querySelector('.entry-form');
 const $entries = document.querySelector('.entries');
+
+const $entryTitle = document.querySelector('.entry-title');
+
+const $noEntries = document.querySelector('.noEntries');
+
+$photoInput.addEventListener('input', function (event) {
+  $handlePhoto.src = event.target.value;
+});
 
 $handleForm.addEventListener('submit', function (event) {
   event.preventDefault();
@@ -94,8 +98,6 @@ document.addEventListener('DOMContentLoaded', function (event) {
   toggleNoEntries();
 });
 
-const $noEntries = document.querySelector('.noEntries');
-
 function toggleNoEntries() {
   if (data.entries.length !== 0) {
     $noEntries.classList.add('hidden');
@@ -127,8 +129,6 @@ $entryFormAnchor.addEventListener('click', function (event) {
   viewSwap(string);
 });
 
-const $entryTitle = document.querySelector('.entry-title');
-
 $list.addEventListener('click', function (event) {
   const firstParent = event.target.parentElement.parentElement.parentElement;
   for (let i = 0; i < data.entries.length; i++) {
@@ -145,4 +145,20 @@ $list.addEventListener('click', function (event) {
     $entryTitle.textContent = 'Edit Entry';
   }
   viewSwap('entry-form');
+});
+
+const $modal = document.querySelector('.modal-container');
+const $deleteEntry = document.querySelector('.delete-button');
+const $body = document.querySelector('body');
+
+$deleteEntry.addEventListener('click', function (event) {
+  $modal.classList.remove('hidden');
+  $body.classList.add('overlay');
+});
+
+const $cancelButton = document.querySelector('.cancel');
+// const $confirmButton = document.querySelector('.confirm');
+
+$cancelButton.addEventListener('click', function (event) {
+  $modal.classList.add('hidden');
 });
