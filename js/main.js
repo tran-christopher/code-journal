@@ -15,6 +15,13 @@ const $entryTitle = document.querySelector('.entry-title');
 
 const $noEntries = document.querySelector('.noEntries');
 
+const $modal = document.querySelector('.modal-container');
+const $deleteEntry = document.querySelector('.delete-button');
+const $darken = document.querySelector('.darken');
+
+const $cancelButton = document.querySelector('.cancel');
+// const $confirmButton = document.querySelector('.confirm');
+
 $photoInput.addEventListener('input', function (event) {
   $handlePhoto.src = event.target.value;
 });
@@ -130,6 +137,7 @@ $entryFormAnchor.addEventListener('click', function (event) {
 });
 
 $list.addEventListener('click', function (event) {
+  $deleteEntry.classList.remove('hidden');
   const firstParent = event.target.parentElement.parentElement.parentElement;
   for (let i = 0; i < data.entries.length; i++) {
     if (
@@ -147,18 +155,20 @@ $list.addEventListener('click', function (event) {
   viewSwap('entry-form');
 });
 
-const $modal = document.querySelector('.modal-container');
-const $deleteEntry = document.querySelector('.delete-button');
-const $body = document.querySelector('body');
+// $confirmButton.addEventListener('click', function (event) {
+//   for (let i = 0; i < data.entries.length; i++) {
+//     if (data.entries[i].entryId.toString() === data.editing.entryId) {
+
+//     }
+//   }
+// })
 
 $deleteEntry.addEventListener('click', function (event) {
   $modal.classList.remove('hidden');
-  $body.classList.add('overlay');
+  $darken.classList.add('overlay');
 });
-
-const $cancelButton = document.querySelector('.cancel');
-// const $confirmButton = document.querySelector('.confirm');
 
 $cancelButton.addEventListener('click', function (event) {
   $modal.classList.add('hidden');
+  $darken.classList.remove('overlay');
 });
