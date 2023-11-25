@@ -23,14 +23,32 @@ $handleForm.addEventListener('submit', function (event) {
     notes: $notesInput.value,
     entryId: data.nextEntryId,
   };
-  data.entries.unshift(newObject);
-  const $newObject = renderEntry(newObject);
-  $list.prepend($newObject);
-  viewSwap('entries');
-  toggleNoEntries();
-  data.nextEntryId++;
-  $handlePhoto.src = 'images/placeholder-image-square.jpg';
-  $handleForm.reset();
+  if (data.editing === null) {
+    data.entries.unshift(newObject);
+    const $newObject = renderEntry(newObject);
+    $list.prepend($newObject);
+    data.nextEntryId++;
+    $handlePhoto.src = 'images/placeholder-image-square.jpg';
+    $handleForm.reset();
+    viewSwap('entries');
+    toggleNoEntries();
+  } else {
+    newObject.entryId = data.editing.entryId;
+    for (let i = 0; i < data.entries.length; i++) {
+      if (newObject.entryId === data.entries[i].entryId) {
+        data.entries[i] = newObject;
+      }
+    }
+    const $newObject = renderEntry(newObject);
+    const $originalLi = document.querySelector(
+      `[data-entry-id="${data.editing.entryId}"]`
+    );
+    $originalLi.replaceWith($newObject);
+    $entryTitle.textContent = 'New Entry';
+    data.editing = null;
+    viewSwap('entries');
+    toggleNoEntries();
+  }
 });
 
 // Issue #2
@@ -39,14 +57,19 @@ function renderEntry(entry) {
   const $imageDiv = document.createElement('div');
   const $image = document.createElement('img');
   const $textDiv = document.createElement('div');
+  const $titleDiv = document.createElement('div');
   const $h3 = document.createElement('h3');
+  const $icon = document.createElement('i');
   const $p = document.createElement('p');
 
   $li.setAttribute('class', 'row');
+  $li.setAttribute('data-entry-id', entry.entryId);
   $imageDiv.setAttribute('class', 'column-half');
   $image.setAttribute('src', entry.url);
   $image.setAttribute('alt', 'Fix your link!');
   $textDiv.setAttribute('class', 'column-half');
+  $titleDiv.setAttribute('class', 'row-no-wrap');
+  $icon.setAttribute('class', 'no-decor align-self-center fa-solid fa-pencil');
 
   $h3.textContent = entry.title;
   $p.textContent = entry.notes;
@@ -54,7 +77,9 @@ function renderEntry(entry) {
   $li.appendChild($imageDiv);
   $li.appendChild($textDiv);
   $imageDiv.appendChild($image);
-  $textDiv.appendChild($h3);
+  $textDiv.appendChild($titleDiv);
+  $titleDiv.appendChild($h3);
+  $titleDiv.appendChild($icon);
   $textDiv.appendChild($p);
 
   return $li;
@@ -100,4 +125,24 @@ const $entryFormAnchor = document.querySelector('.entry-form-anchor');
 $entryFormAnchor.addEventListener('click', function (event) {
   const string = 'entry-form';
   viewSwap(string);
+});
+
+const $entryTitle = document.querySelector('.entry-title');
+
+$list.addEventListener('click', function (event) {
+  const firstParent = event.target.parentElement.parentElement.parentElement;
+  for (let i = 0; i < data.entries.length; i++) {
+    if (
+      data.entries[i].entryId.toString() ===
+      firstParent.getAttribute('data-entry-id')
+    ) {
+      data.editing = data.entries[i];
+    }
+    $titleInput.value = data.editing.title;
+    $photoInput.value = data.editing.url;
+    $notesInput.value = data.editing.notes;
+    $handlePhoto.src = data.editing.url;
+    $entryTitle.textContent = 'Edit Entry';
+  }
+  viewSwap('entry-form');
 });
