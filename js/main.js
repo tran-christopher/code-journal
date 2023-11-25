@@ -20,7 +20,7 @@ const $deleteEntry = document.querySelector('.delete-button');
 const $darken = document.querySelector('.darken');
 
 const $cancelButton = document.querySelector('.cancel');
-// const $confirmButton = document.querySelector('.confirm');
+const $confirmButton = document.querySelector('.confirm');
 
 $photoInput.addEventListener('input', function (event) {
   $handlePhoto.src = event.target.value;
@@ -155,13 +155,7 @@ $list.addEventListener('click', function (event) {
   viewSwap('entry-form');
 });
 
-// $confirmButton.addEventListener('click', function (event) {
-//   for (let i = 0; i < data.entries.length; i++) {
-//     if (data.entries[i].entryId.toString() === data.editing.entryId) {
-
-//     }
-//   }
-// })
+$confirmButton.addEventListener('click', function (event) {});
 
 $deleteEntry.addEventListener('click', function (event) {
   $modal.classList.remove('hidden');
