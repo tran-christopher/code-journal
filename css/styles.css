@@ -103,3 +103,13 @@ img {
 .align-self-center {
   align-self: center;
 }
+
+.delete-button {
+  color: red;
+  border-width: 0;
+  text-decoration: underline;
+}
+
+.delete-button:hover {
+  cursor: pointer;
+}
