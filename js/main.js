@@ -1,6 +1,5 @@
 /* global data */
 
-// Issue #1
 const $titleInput = document.querySelector('.title');
 const $notesInput = document.querySelector('.notes');
 const $photoInput = document.querySelector('.photo');
@@ -62,7 +61,6 @@ $handleForm.addEventListener('submit', function (event) {
   }
 });
 
-// Issue #2
 function renderEntry(entry) {
   const $li = document.createElement('li');
   const $imageDiv = document.createElement('div');
@@ -155,7 +153,23 @@ $list.addEventListener('click', function (event) {
   viewSwap('entry-form');
 });
 
-$confirmButton.addEventListener('click', function (event) {});
+$confirmButton.addEventListener('click', function (event) {
+  const $removeEntry = document.querySelector(
+    `[data-entry-id="${data.editing.entryId}"]`
+  );
+  for (let i = 0; i < data.entries.length; i++) {
+    if (data.editing.entryId === data.entries[i].entryId) {
+      data.entries.splice(data.entries[i] - 1, 1);
+      $removeEntry.remove();
+      $modal.classList.add('hidden');
+      $darken.classList.remove('overlay');
+      viewSwap('entries');
+    }
+  }
+  if (data.entries[0] === null) {
+    toggleNoEntries();
+  }
+});
 
 $deleteEntry.addEventListener('click', function (event) {
   $modal.classList.remove('hidden');
