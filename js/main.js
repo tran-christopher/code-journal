@@ -1,19 +1,29 @@
 /* global data */
 
-// Issue #1
 const $titleInput = document.querySelector('.title');
 const $notesInput = document.querySelector('.notes');
 const $photoInput = document.querySelector('.photo');
 const $handlePhoto = document.querySelector('.image');
 
-$photoInput.addEventListener('input', function (event) {
-  $handlePhoto.src = event.target.value;
-});
-
 const $handleForm = document.querySelector('.form');
 const $list = document.querySelector('.no-bullets');
 const $entryForm = document.querySelector('.entry-form');
 const $entries = document.querySelector('.entries');
+
+const $entryTitle = document.querySelector('.entry-title');
+
+const $noEntries = document.querySelector('.noEntries');
+
+const $modal = document.querySelector('.modal-container');
+const $deleteEntry = document.querySelector('.delete-button');
+const $darken = document.querySelector('.darken');
+
+const $cancelButton = document.querySelector('.cancel');
+const $confirmButton = document.querySelector('.confirm');
+
+$photoInput.addEventListener('input', function (event) {
+  $handlePhoto.src = event.target.value;
+});
 
 $handleForm.addEventListener('submit', function (event) {
   event.preventDefault();
@@ -51,7 +61,6 @@ $handleForm.addEventListener('submit', function (event) {
   }
 });
 
-// Issue #2
 function renderEntry(entry) {
   const $li = document.createElement('li');
   const $imageDiv = document.createElement('div');
@@ -94,8 +103,6 @@ document.addEventListener('DOMContentLoaded', function (event) {
   toggleNoEntries();
 });
 
-const $noEntries = document.querySelector('.noEntries');
-
 function toggleNoEntries() {
   if (data.entries.length !== 0) {
     $noEntries.classList.add('hidden');
@@ -127,9 +134,8 @@ $entryFormAnchor.addEventListener('click', function (event) {
   viewSwap(string);
 });
 
-const $entryTitle = document.querySelector('.entry-title');
-
 $list.addEventListener('click', function (event) {
+  $deleteEntry.classList.remove('hidden');
   const firstParent = event.target.parentElement.parentElement.parentElement;
   for (let i = 0; i < data.entries.length; i++) {
     if (
@@ -145,4 +151,32 @@ $list.addEventListener('click', function (event) {
     $entryTitle.textContent = 'Edit Entry';
   }
   viewSwap('entry-form');
+});
+
+$confirmButton.addEventListener('click', function (event) {
+  const $removeEntry = document.querySelector(
+    `[data-entry-id="${data.editing.entryId}"]`
+  );
+  for (let i = 0; i < data.entries.length; i++) {
+    if (data.editing.entryId === data.entries[i].entryId) {
+      data.entries.splice(data.entries[i] - 1, 1);
+      $removeEntry.remove();
+      $modal.classList.add('hidden');
+      $darken.classList.remove('overlay');
+      viewSwap('entries');
+    }
+  }
+  if (data.entries[0] === null) {
+    toggleNoEntries();
+  }
+});
+
+$deleteEntry.addEventListener('click', function (event) {
+  $modal.classList.remove('hidden');
+  $darken.classList.add('overlay');
+});
+
+$cancelButton.addEventListener('click', function (event) {
+  $modal.classList.add('hidden');
+  $darken.classList.remove('overlay');
 });
